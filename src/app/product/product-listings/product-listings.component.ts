@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import{products} from '../../products'
+import { ProductService } from '../shared/product.service';
+
 
 @Component({
   selector: 'app-product-listing',
@@ -9,8 +10,18 @@ import{products} from '../../products'
 export class ProductListComponent {
   products: any;
 
-  ngOnInit(){
-    this.products = products
-  }
+constructor(private productService: ProductService){
 
+}
+
+  ngOnInit(){
+    const productObservable = this.productService.getProducts()
+    productObservable.subscribe({
+      next: data => { 
+        this.products = data
+      },
+      error: err => {console.error('something wrong occurred: ' + err)}
+    });
+    
+  }
 }

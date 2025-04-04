@@ -54,10 +54,10 @@ class FakeDb{
             }
         ]
     }
-async initDb(){
-    await this.cleanDb()
-    this.pushProductToDb()
-}
+    async initDb(){
+        await this.cleanDb()
+        this.pushProductToDb()
+    }
 
      async cleanDb(){
          await Product.deleteMany({})
@@ -71,9 +71,9 @@ async initDb(){
     }
 
 
-    seeDb(){
-        this.pushProductToDb()
-    }
+    // seeDb(){
+    //     this.pushProductToDb()
+    // }
 
 }
 
